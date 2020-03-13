@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  import { syllabify } from '../../'\n\texport let name;\n  let text = `Привет! Как дела?!`;\n  let hideTextbox = false\n  let dashSeporator = false\n  let hideSeporator = false\n\n  $: fontSize = '20px'\n  $: separator = hideSeporator ? '' : (dashSeporator ? '-': '_')\n\n  const fontUp = () => {\n    fontSize = Number(fontSize.match(/[0-9]+/)[0]) + 2 + 'px'\n  }\n\n  const fontDown = () => {\n    fontSize = Number(fontSize.match(/[0-9]+/)[0]) - 2 + 'px'\n  }\n</script>\n\n<main>\n\t<h1><a href=\"https://github.com/rhrn/syllables-ru\">{name}</a></h1>\n  <div>\n    Разделитель тире: <input type=checkbox bind:checked={dashSeporator}>\n    Скрыть разделитель: <input type=checkbox bind:checked={hideSeporator}>\n    Размер шрифта:\n    <button on:click={fontUp}>+</button>\n    <button on:click={fontDown}>-</button>\n    Скрыть ввод: <input type=checkbox bind:checked={hideTextbox}>\n  </div>\n  <textarea class:hideTextbox bind:value={text}></textarea>\n  <div class=\"display\" style=\"--fontSize: {fontSize}\">\n    {syllabify(text, { separator })}\n  </div>\n</main>\n\n<style>\n.hideTextbox {\n  display: none;\n}\n\nmain {\n  text-align: center;\n  padding: 1em;\n  max-width: 240px;\n  margin: 0 auto;\n}\n\ntextarea {\n  width: 100%;\n  height: 30vh;\n}\n\n.display {\n  font-size: var(--fontSize);\n}\n\nh1 {\n  color: #ff3e00;\n  text-transform: uppercase;\n  font-size: 2em;\n  font-weight: 100;\n}\n\n@media (min-width: 640px) {\n  main {\n    max-width: none;\n  }\n}\n</style>\n"
+  ],
+  "names": [],
+  "mappings": "AAqCA,YAAY,eAAC,CAAC,AACZ,OAAO,CAAE,IAAI,AACf,CAAC,AAED,IAAI,eAAC,CAAC,AACJ,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,GAAG,CACZ,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,CAAC,CAAC,IAAI,AAChB,CAAC,AAED,QAAQ,eAAC,CAAC,AACR,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,AACd,CAAC,AAED,QAAQ,eAAC,CAAC,AACR,SAAS,CAAE,IAAI,UAAU,CAAC,AAC5B,CAAC,AAED,EAAE,eAAC,CAAC,AACF,KAAK,CAAE,OAAO,CACd,cAAc,CAAE,SAAS,CACzB,SAAS,CAAE,GAAG,CACd,WAAW,CAAE,GAAG,AAClB,CAAC,AAED,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzB,IAAI,eAAC,CAAC,AACJ,SAAS,CAAE,IAAI,AACjB,CAAC,AACH,CAAC"
+}
