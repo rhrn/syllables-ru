@@ -4,12 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "npx standard '*.js'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^25.1.0"
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "standard": "^14.3.2"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm test"
+    }
   }
 }
