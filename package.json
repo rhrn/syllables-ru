@@ -1,15 +1,19 @@
 {
   "name": "syllables-ru",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Разбиение слов на слоги / Russian syllables",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rhrn/syllables-ru.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "lint": "npx standard '*.js'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["syllables", "russian", "words", "слова", "слоги"],
+  "author": "@rhrn",
+  "license": "BSD",
   "devDependencies": {
     "husky": "^4.2.3",
     "jest": "^25.1.0",
