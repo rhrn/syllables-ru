@@ -83,4 +83,11 @@ describe('syllabify', () => {
       expect(syllabifyWord('выпускница')).toEqual('вы·пу·скни·ца')
     })
   })
+
+  describe('dashed words', () => {
+    it('base', () => {
+      expect(syllabifyWord('жили-были')).toEqual('жи·ли-бы·ли')
+      expect(syllabifyWord('из-за')).toEqual('из-за')
+    })
+  })
 })
