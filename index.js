@@ -51,7 +51,7 @@ const indexSonoric = (letters) => {
   return index
 }
 
-const syllabifyWord = (word, { separator = '-' } = {}) => {
+const syllabifyWord = (word, { separator = '·' } = {}) => {
   const collection = []
 
   const vowelsMatches = word.match(vowels)
@@ -118,7 +118,7 @@ const syllabifyWord = (word, { separator = '-' } = {}) => {
   return word.replace(/[а-яё]+/i, collection.join(separator))
 }
 
-const syllabify = (source, { separator = '-' } = {}) => {
+const syllabify = (source, { separator = '·' } = {}) => {
   const words = splitWords(source)
   const syllabifyedWords = words.map(word => syllabifyWord(word, { separator }))
   return joinWords(syllabifyedWords)
