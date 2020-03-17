@@ -3,10 +3,12 @@
 	export let name;
   let text = `Привет! Как дела?!`;
   let hideTextbox = false
-  let dotSeporator = false
   let hideSeporator = false
+  let dotSeporator = false
+  let fontFamilyDefault = true
 
   $: fontSize = '20px'
+  $: fontFamily = fontFamilyDefault ? 'none': 'monospace'
   $: separator = hideSeporator ? '' : (dotSeporator ? '-': '·')
 
   const fontUp = () => {
@@ -21,15 +23,20 @@
 <main>
 	<h1><a href="https://github.com/rhrn/syllables-ru">{name}</a></h1>
   <div>
-    Разделитель тире: <input type=checkbox bind:checked={dotSeporator}>
-    Скрыть разделитель: <input type=checkbox bind:checked={hideSeporator}>
-    Размер шрифта:
+    {#if !hideSeporator}
+    <span>
+      Тире <input type=checkbox bind:checked={dotSeporator}> |
+    </span>
+    {/if}
+    <strike>Разделитель</strike> <input type=checkbox bind:checked={hideSeporator}> |
+    Размер
     <button on:click={fontUp}>+</button>
-    <button on:click={fontDown}>-</button>
-    Скрыть ввод: <input type=checkbox bind:checked={hideTextbox}>
+    <button on:click={fontDown}>-</button> |
+    Шрифт: <input type=checkbox bind:checked={fontFamilyDefault}> |
+    Скрыть ввод <input type=checkbox bind:checked={hideTextbox}>
   </div>
   <textarea class:hideTextbox bind:value={text}></textarea>
-  <pre class="display" style="--fontSize: {fontSize}">
+  <pre class="display" style="--fontSize: {fontSize}; --fontFamily: {fontFamily}">
     {syllabify(text, { separator })}
   </pre>
 </main>
@@ -53,6 +60,8 @@ textarea {
 
 .display {
   font-size: var(--fontSize);
+  font-family: var(--fontFamily);
+  text-align: left;
 }
 
 h1 {
