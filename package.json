@@ -1,6 +1,6 @@
 {
   "name": "syllables-ru",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Разбиение слов на слоги / Russian syllables",
   "repository": {
     "type": "git",
