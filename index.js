@@ -3,6 +3,14 @@ const deaf = 'длкпстфхцчшщДЛКПСТФХЦЧШЩ'
 const signs = ['ь', 'ъ', 'Ь', 'Ъ']
 const voiced = ['м', 'р', 'л', 'н', 'М', 'Р', 'Л', 'Н']
 
+const splitLines = source => {
+  return source.split('\n')
+}
+
+const joinLines = lines => {
+  return lines.join('\n')
+}
+
 const splitWords = source => {
   return source.split(' ')
 }
@@ -119,9 +127,13 @@ const syllabifyWord = (word, { separator = '·' } = {}) => {
 }
 
 const syllabify = (source, { separator = '·' } = {}) => {
-  const words = splitWords(source)
-  const syllabifyedWords = words.map(word => syllabifyWord(word, { separator }))
-  return joinWords(syllabifyedWords)
+  const lines = splitLines(source)
+  const modifyLines = lines.map(line => {
+    const words = splitWords(line)
+    const syllabifyedWords = words.map(word => syllabifyWord(word, { separator }))
+    return joinWords(syllabifyedWords)
+  })
+  return joinLines(modifyLines)
 }
 
 module.exports.syllabify = syllabify

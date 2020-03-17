@@ -3,11 +3,11 @@
 	export let name;
   let text = `Привет! Как дела?!`;
   let hideTextbox = false
-  let dashSeporator = false
+  let dotSeporator = false
   let hideSeporator = false
 
   $: fontSize = '20px'
-  $: separator = hideSeporator ? '' : (dashSeporator ? '-': '_')
+  $: separator = hideSeporator ? '' : (dotSeporator ? '-': '·')
 
   const fontUp = () => {
     fontSize = Number(fontSize.match(/[0-9]+/)[0]) + 2 + 'px'
@@ -21,7 +21,7 @@
 <main>
 	<h1><a href="https://github.com/rhrn/syllables-ru">{name}</a></h1>
   <div>
-    Разделитель тире: <input type=checkbox bind:checked={dashSeporator}>
+    Разделитель тире: <input type=checkbox bind:checked={dotSeporator}>
     Скрыть разделитель: <input type=checkbox bind:checked={hideSeporator}>
     Размер шрифта:
     <button on:click={fontUp}>+</button>
@@ -29,9 +29,9 @@
     Скрыть ввод: <input type=checkbox bind:checked={hideTextbox}>
   </div>
   <textarea class:hideTextbox bind:value={text}></textarea>
-  <div class="display" style="--fontSize: {fontSize}">
+  <pre class="display" style="--fontSize: {fontSize}">
     {syllabify(text, { separator })}
-  </div>
+  </pre>
 </main>
 
 <style>
