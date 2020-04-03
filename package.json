@@ -11,7 +11,13 @@
     "test": "jest",
     "lint": "npx standard '*.js'"
   },
-  "keywords": ["syllables", "russian", "words", "слова", "слоги"],
+  "keywords": [
+    "syllables",
+    "russian",
+    "words",
+    "слова",
+    "слоги"
+  ],
   "author": "@rhrn",
   "license": "BSD",
   "devDependencies": {
