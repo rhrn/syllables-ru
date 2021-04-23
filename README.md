@@ -13,7 +13,7 @@
 
 ### 🏠 [Homepage](https://github.com/rhrn/syllables-ru)
 
-### ✨ [Demo](https://rhrn.github.com/syllables-ru)
+### ✨ [Demo](https://rhrn.github.io/syllables-ru)
 
 ## Install
 
